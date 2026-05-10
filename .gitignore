@@ -1,0 +1,6 @@
+node_modules/
+config.env
+mock_db.json
+.DS_Store
+*.log
+.env

@@ -3,124 +3,158 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StrangerSync</title>
-    <link rel="stylesheet" href="/css/home_page.css" />
+    <title>StrangerSync | Meet People Around the World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/modern.css" />
+    <style>
+      .hero-section {
+        max-width: 600px;
+        margin-top: 60px;
+      }
+      .hero-title {
+        font-size: 64px;
+        line-height: 1.1;
+        margin-bottom: 24px;
+      }
+      .hero-desc {
+        color: var(--text-dim);
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+      .online-count {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 255, 133, 0.1);
+        color: #00ff85;
+        padding: 6px 12px;
+        border-radius: 100px;
+        font-size: 14px;
+        margin-bottom: 32px;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        background: #00ff85;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #00ff85;
+      }
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 60px;
+      }
+      .feature-mini-card {
+        padding: 24px;
+        text-align: center;
+      }
+      .feature-mini-card h4 {
+        margin: 12px 0 8px;
+        font-size: 16px;
+      }
+      .feature-mini-card p {
+        font-size: 13px;
+        color: var(--text-dim);
+      }
+      .bg-glow {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(138, 79, 255, 0.15) 0%, rgba(0,0,0,0) 70%);
+        z-index: -1;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <nav>
-        <div class="container">
-          <table>
-            <tr>
-              <td>
-                <img src="/img/logo.png" alt="logo" class="logo" />
-              </td>
-              <td><h1>StrangerSync</h1></td>
-            </tr>
-          </table>
+    <div class="bg-glow"></div>
+    
+    <nav class="top-nav">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 40px; height: 40px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
         </div>
-      </nav>
-    </header>
-    <main>
-      <div class="main-container">
-        <h2>Welcome to Stranger Sync – Your Gateway to Meeting New People!</h2>
-        <h3>Connect. Chat. Explore.</h3>
-        <p>
-          <strong>Stranger Sync</strong> is the ultimate platform to meet and
-          chat with new people from around the world. Whether you're looking to
-          make new friends, practice a new language, or just have a casual
-          conversation, Stranger Sync makes it simple and fun. Dive into a world
-          of endless possibilities, where every connection is a new adventure.
+        <h2 style="font-weight: 800; letter-spacing: -1px;">StrangerSync</h2>
+      </div>
+      
+      <div class="nav-links">
+        <a href="#" class="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">Safety</a>
+        <a href="#">Premium</a>
+      </div>
+      
+      <div class="auth-buttons">
+        <% if (user) { %>
+          <span style="color: var(--text-dim); font-size: 14px; margin-right: 16px;">Welcome, <b><%= user.username %></b></span>
+          <button class="btn-outline" onclick="window.location.href='/logout'">Logout</button>
+        <% } else { %>
+          <button class="btn-outline" onclick="window.location.href='/login'">Sign in</button>
+          <button class="btn-primary" onclick="window.location.href='/signup'">Sign up</button>
+        <% } %>
+      </div>
+    </nav>
+
+    <main class="app-container" style="justify-content: center; align-items: flex-start; text-align: left;">
+      <div class="hero-section">
+        <div class="online-count">
+          <div class="dot"></div>
+          <span>1,234+ people online</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Meet new people from around the <span class="gradient-text">world</span>
+        </h1>
+        
+        <p class="hero-desc">
+          Start a random video chat and make a real connection. Experience the world through someone else's eyes.
         </p>
-        <div class="action-container">
-          <h4>Start Chatting Now!</h4>
-          <p>
-            Hit the button below to dive into your first conversation on
-            Stranger Sync. Your next friend is just a click away!
-          </p>
-          <div class="button-container">
-            <button class="action-button">
-              <a href="./text_chat">Text Chat</a>
-            </button>
-            <button class="action-button">
-              <a href="./video_chat">Video Chat</a>
-            </button>
+        
+        <div style="display: flex; gap: 16px; margin-bottom: 24px;">
+           <button class="btn-outline" style="flex: 1; justify-content: center; background: rgba(138, 79, 255, 0.1); border-color: var(--accent-purple);">
+             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+             Video Chat
+           </button>
+           <button class="btn-outline" style="flex: 1; justify-content: center;">
+             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+             Text Chat
+           </button>
+        </div>
+        
+        <button class="btn-primary" style="width: 100%; height: 60px; justify-content: center; font-size: 18px;" onclick="window.location.href='/video_chat'">
+          Start Video Chat
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 8px;"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </button>
+        
+        <div class="feature-grid">
+          <div class="glass-card feature-mini-card">
+             <div style="color: var(--accent-purple); font-size: 24px;">✦</div>
+             <h4>100% Free</h4>
+             <p>Always free to use</p>
+          </div>
+          <div class="glass-card feature-mini-card">
+             <div style="color: var(--accent-purple); font-size: 24px;">👤</div>
+             <h4>No Registration</h4>
+             <p>Start instantly</p>
+          </div>
+          <div class="glass-card feature-mini-card">
+             <div style="color: var(--accent-purple); font-size: 24px;">🛡️</div>
+             <h4>Safe & Secure</h4>
+             <p>Your safety is priority</p>
           </div>
         </div>
-        <br /><br /><br />
-        <h3 class="centered-heading" style="font-size: 40px">Features</h3>
-        <div class="features-container">
-          <div class="feature-card">
-            <h4 style="color: #fff6e9">Random Pairing</h4>
-            <p>
-              Get paired with a random stranger every time you hit "Start Chat."
-              You never know who you might meet next!
-            </p>
-          </div>
-          <div class="feature-card">
-            <h4 style="color: #fff6e9">Interests Matching</h4>
-            <p>
-              Add your interests, and we'll try to pair you with someone who
-              shares the same hobbies or topics.
-            </p>
-          </div>
-          <div class="feature-card">
-            <h4 style="color: #fff6e9">Safe and Secure</h4>
-            <p>
-              Our platform is designed to ensure your safety. We provide easy
-              options to report and block inappropriate behavior.
-            </p>
-          </div>
-          <div class="feature-card">
-            <h4 style="color: #fff6e9">Language Practice</h4>
-            <p>
-              Looking to practice a new language? Use our interests feature to
-              find someone who speaks the language you're learning.
-            </p>
-          </div>
-          <div class="feature-card">
-            <h4 style="color: #fff6e9">Global Community</h4>
-            <p>
-              Join a vibrant community of users from all over the world. Expand
-              your horizons and make connections across different cultures.
-            </p>
-          </div>
-        </div>
-        <br /><br /><br />
-        <h3 class="centered-heading" style="font-size: 40px">
-          User Guidelines
-        </h3>
-        <div class="guidelines-container">
-          <div class="guideline-card">
-            <h4 style="color: #fff6e9">Respect Each Other</h4>
-            <p>
-              Treat everyone with kindness and respect. Harassment and abusive
-              behavior are not tolerated.
-            </p>
-          </div>
-          <div class="guideline-card">
-            <h4 style="color: #fff6e9">Stay Safe</h4>
-            <p>
-              Never share personal information such as your address, phone
-              number, or financial details.
-            </p>
-          </div>
-          <div class="guideline-card">
-            <h4 style="color: #fff6e9">Report Issues</h4>
-            <p>
-              Use the report button if you encounter any inappropriate behavior
-              or content.
-            </p>
-          </div>
-        </div>
+        
+        <p style="margin-top: 40px; font-size: 12px; color: var(--text-dim);">
+          By using StrangerSync, you agree to our <a href="#" style="color: white;">Terms of Service</a> and <a href="#" style="color: white;">Privacy Policy</a>.
+        </p>
       </div>
     </main>
 
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.min.js"
-      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-      crossorigin="anonymous"
-    ></script>
-    <script src="/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/ui_enhancements.js"></script>
   </body>
 </html>

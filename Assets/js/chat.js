@@ -171,7 +171,7 @@ function runUser() {
       "</div>";
   }
   function onReceiveChannelStateChange() {
-    const readystate = receiveChannel.readystate;
+    const readystate = receiveChannel.readyState;
     console.log("Receive channel state is: " + readystate);
     if (readystate === "open") {
       console.log(
@@ -184,7 +184,7 @@ function runUser() {
     }
   }
   function onSendChannelStateChange() {
-    const readystate = sendChannel.readystate;
+    const readystate = sendChannel.readyState;
     console.log("Send channel state is: " + readystate);
     if (readystate === "open") {
       console.log(

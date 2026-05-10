@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | StrangerSync</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/modern.css" />
+    <style>
+      .auth-container {
+        max-width: 400px;
+        width: 100%;
+        margin: 100px auto;
+        padding: 40px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 8px;
+        color: var(--text-dim);
+      }
+      input {
+        width: 100%;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--glass-border);
+        border-radius: 12px;
+        color: white;
+        outline: none;
+      }
+      input:focus {
+        border-color: var(--accent-purple);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="auth-container glass-card">
+      <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 8px;">Welcome Back</h2>
+      <p style="color: var(--text-dim); margin-bottom: 32px; font-size: 14px;">Sign in to continue to StrangerSync</p>
+      
+      <form action="/login" method="POST">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" required placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" name="password" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;">Sign In</button>
+      </form>
+      
+      <p style="margin-top: 24px; text-align: center; font-size: 14px; color: var(--text-dim);">
+        Don't have an account? <a href="/signup" style="color: white; font-weight: 600;">Sign up</a>
+      </p>
+    </div>
+  </body>
+</html>

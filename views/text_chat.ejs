@@ -3,48 +3,80 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StrangerSync</title>
-    <link rel="stylesheet" href="/css/video_chat.css" />
-    <link rel="stylesheet" href="/css/home_page.css" />
+    <title>StrangerSync | Text Chat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/modern.css" />
+    <style>
+      .chat-text-area {
+        height: 400px;
+        overflow-y: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .chat-text-area::-webkit-scrollbar {
+        width: 4px;
+      }
+      .chat-text-area::-webkit-scrollbar-thumb {
+        background: var(--glass-border);
+        border-radius: 10px;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <nav>
-        <div class="container">
-          <table>
-            <tr>
-              <td>
-                <img src="/img/logo.png" alt="logo" class="logo" />
-              </td>
-              <td><h1>StrangerSync</h1></td>
-            </tr>
-          </table>
+    <nav class="top-nav">
+      <div style="display: flex; align-items: center; gap: 12px; cursor: pointer;" onclick="window.location.href='/'">
+        <div style="width: 40px; height: 40px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
-      </nav>
-    </header>
-    <main class="Video-chat-main-container">
-      <div class="video_chat_container">
-        <div class="chat-container">
-          <div class="chat-text-container">
-            <p>You are now chatting with a random stranger!</p>
-            <p>You both speak the same language: English</p>
-            <hr class="horizontal-divider" />
-            <p class="chat-text-area"></p>
-          </div>
-          <div class="next-chat-container">
-            <div class="next-chat">Next</div>
-            <div class="type-message">
-              <textarea
-                id="msg-input"
-                rows="2"
-                placeholder="Type your message here..."
-              ></textarea>
-            </div>
-            <div class="msg-send-button">Send</div>
-          </div>
-        </div>
+        <h2 style="font-weight: 800; letter-spacing: -1px;">StrangerSync</h2>
       </div>
+      
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="#">About</a>
+        <a href="#">Safety</a>
+        <a href="#">Premium</a>
+      </div>
+      
+      <div class="auth-buttons">
+        <% if (user) { %>
+          <span style="color: var(--text-dim); font-size: 14px; margin-right: 16px;">Welcome, <b><%= user.username %></b></span>
+          <button class="btn-outline" onclick="window.location.href='/logout'">Logout</button>
+        <% } else { %>
+          <button class="btn-outline" onclick="window.location.href='/login'">Sign in</button>
+          <button class="btn-primary" onclick="window.location.href='/signup'">Sign up</button>
+        <% } %>
+      </div>
+    </nav>
+
+    <main class="app-container" style="justify-content: center;">
+      <section style="max-width: 800px; width: 100%; display: flex; flex-direction: column; gap: 24px;">
+        <div class="glass-card" style="padding: 24px;">
+          <div class="status-badge" style="margin-bottom: 20px;">
+             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+             Connection established
+             <span style="color: var(--text-dim); margin-left: 8px; font-weight: 400;">You're now chatting with a random stranger via text.</span>
+          </div>
+
+          <div class="chat-text-area"></div>
+
+          <div class="chat-input-wrapper">
+            <input type="text" id="msg-input" placeholder="Type a message...">
+            <div style="display: flex; gap: 8px; align-items: center; padding-right: 8px;">
+               <button class="btn-outline next-chat" style="padding: 8px 16px; border-radius: 12px; font-size: 13px;">Next</button>
+               <button class="send-btn msg-send-button">
+                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(-45)"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+               </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
+
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
